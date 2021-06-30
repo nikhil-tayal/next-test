@@ -29,10 +29,23 @@ export default function Home({ hts2Data }: { hts2Data: any }) {
     </div>
   );
 }
-
-// export const getStaticProps: GetStaticProps = async (context) => {
-//   const res = await fetch(`https://hts-api.dripcapital.com/api/hts4/hts2/01`);
+// export async function getStaticPaths() {
+//   return {
+//     paths: [
+//       {
+//         params: {
+//           hts4: '01',
+//         },
+//       },
+//     ],
+//     fallback: true 
+//   };
+// }
+// export const getStaticProps: GetStaticProps = async ({params}) => {
+//   const res = await fetch(`https://hts-api.dripcapital.com/api/hts6/hts4/01${params?.hts4}`);
+//   console.log(`https://hts-api.dripcapital.com/api/hts6/hts4/01${params?.hts4}`)
 //   const data = await res.json();
+//   console.log(data)
 //   return {
 //     props: {
 //       hts2Data: data,
@@ -40,7 +53,7 @@ export default function Home({ hts2Data }: { hts2Data: any }) {
 //   };
 // };
 export const getServerSideProps: GetServerSideProps = async ({params}) => {
-  const res = await fetch(`https://hts-api.dripcapital.com/api/hts4/hts2/01`);
+  const res = await fetch(`https://hts-api.dripcapital.com/api/hts6/hts4/01${params?.hts4}`);
     const data = await res.json();
     return {
       props: {
